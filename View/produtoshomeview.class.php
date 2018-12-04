@@ -26,6 +26,9 @@ class ProdutosHomeView extends InterfaceHtml {
         return $fieldsetProdutos;
     }
 
+    public function recebeDadosDoFormulario($clieCpf) {
+        return new ProdutosDasCestaModel($clieCpf, $_POST['prodId']);
+    }
     public function montaTabelaProdutos() {
         $form = new FormHtml("home.php", "post");
         $br = new BrHtml();

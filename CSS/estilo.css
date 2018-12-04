@@ -4,10 +4,10 @@ body{
 div#divCabecalho {
     height: 15%;
     /*border: 1px solid #000;*/
-/*    background-image: url("ifg-inhumas.jpg");
-    background-attachment: fixed;
-    background-position: top left;
-    background-repeat: no-repeat;*/
+    /*    background-image: url("ifg-inhumas.jpg");
+        background-attachment: fixed;
+        background-position: top left;
+        background-repeat: no-repeat;*/
     background-color: rgb(0, 0, 0);
     border-radius: 10px;
 }
@@ -18,11 +18,12 @@ div.container img {
 div#divMenu {
     float: left;
     width: 18%;
-    background-color: rgb(0, 0, 0);
+    background-color: rgb(255, 255, 255, 0.7);
     border-radius: 10px;
 }
 div#divConteudo {
     margin-left: 19%;
+    max-width: 70%; 
     background-color: rgb(255, 255, 255, 0.7);
     border-radius: 10px;
 }

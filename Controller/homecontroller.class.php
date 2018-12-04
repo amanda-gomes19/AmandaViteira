@@ -46,10 +46,8 @@ class HomeController {
     }
 
     private function incluiProdutoNaCesta($aux) {
-        $this->produtomodel->setProdId($this->produtoado->recuperaId());
-        $this->produtosdacestamodel->setPrceProdId($this->produtoado->recuperaId());
-        $this->produtosdacestamodel->setPrceCestClieCpf($aux);
-        
+        $this->produtosdacestamodel = $this->produtoHomeView->recebeDadosDoFormulario($aux);
+        var_dump($this->produtosdacestamodel);
         $inseriu = $this->produtosDaCestaAdo->insereObjeto($this->produtosdacestamodel);
 
         if ($inseriu) {

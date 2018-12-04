@@ -100,8 +100,8 @@ abstract class InterfaceHtml {
         $this->divDoCabecalho->setId("divCabecalho");
         $this->divDoCabecalho->setClass("container");
 
-        $imgIfg = new HtmlImg("../CSS/ifg-inhumas.jpg", "Imagem do IFG");
-        $this->divDoCabecalho->adicionaObjeto($imgIfg);
+//        $imgIfg = new HtmlImg("../CSS/ifg-inhumas.jpg", "Imagem do IFG");
+//        $this->divDoCabecalho->adicionaObjeto($imgIfg);
     }
 
     private function montaDivDoMenu() {
@@ -115,7 +115,16 @@ abstract class InterfaceHtml {
         $li->adicionaObjeto($a);
 
         $ul->adicionaObjeto($li);
+        
+        $li = new HtmlLi();
 
+        $a = new HtmlA();
+        $a->setHref("login.php");
+        $a->adicionaObjeto("Login");
+        $li->adicionaObjeto($a);
+
+        $ul->adicionaObjeto($li);
+        
         $li = new HtmlLi();
 
         $a = new HtmlA();
@@ -128,20 +137,12 @@ abstract class InterfaceHtml {
         $li = new HtmlLi();
 
         $a = new HtmlA();
-        $a->setHref("mantemcesta.php");
+        $a->setHref("cestadecompras.php");
         $a->adicionaObjeto("Cesta de Produtos");
         $li->adicionaObjeto($a);
 
         $ul->adicionaObjeto($li);
 
-        $li = new HtmlLi();
-
-        $a = new HtmlA();
-        $a->setHref("login.php");
-        $a->adicionaObjeto("Login");
-        $li->adicionaObjeto($a);
-
-        $ul->adicionaObjeto($li);
 
         $this->divDoMenu->adicionaObjeto($ul);
     }

@@ -9,19 +9,20 @@ class CestaDeComprasView extends InterfaceHtml {
     }
 
     protected function montaTituloDoModulo() {
-        return "Cesta de Compra";
+        return "Cesta de Produtos";
     }
 
-    public function montaFormDosDados($dados) {
-        $montou = $tabelaDaCestaDeProdutos = $this->montaTabelaCesta($clieId);
-        if ($montou) {
-            return $tabelaDaCestaDeProdutos;
-        } else {
-            $this->adicionaMensagem("A sua cesta de produtos ainda está vazia!");
-            return false;
-        }
+    public function montaFormDosDados($clieCpf) {
+        $div = new DivHtml();
+        $div->adicionaObjeto($this->montaFieldsetCesta($clieCpf));
+        return $div;
     }
-    
+
+    protected function montaFieldsetCesta($clieCpf) {
+        $fieldsetProdutoDaCesta = new HtmlFieldset();
+        $fieldsetProdutoDaCesta->adicionaObjeto($this->montaTabelaCesta($clieCpf));
+    }
+
     public function montaObjetoForm($cesta) {
         $form = new FormHtml();
         $form->setMethod("post");
@@ -40,16 +41,16 @@ class CestaDeComprasView extends InterfaceHtml {
 
         return $form;
     }
-    
+
     public function montaTabelaCesta($clieCpf) {
         $cestaDeComprasAdo = new CestaDeCompraAdo();
-        $buscou            = $cestaDeProdutos   = $cestaDeComprasAdo->buscaProdutosDaCesta($clieCpf);
+        $buscou = $cestaDeProdutos = $cestaDeComprasAdo->buscaProdutosDaCesta($clieCpf);
 
         if ($buscou) {
             //continua
         } else {
             if ($buscou === 0) {
-                $this->adicionaMensagem("Tabela Vazia");
+                $this->adicionaMensagem("A sua cesta de produtos ainda está vazia!");
             } else {
                 $this->adicionaMensagem("Erro! Contate o responsável pelo sistema.");
             }
@@ -87,9 +88,13 @@ class CestaDeComprasView extends InterfaceHtml {
             $table->adicionaObjeto($tr);
         }
     }
-    
+
     function montaLegendaDados($acao) {
         $this->textoDaLegenda = null;
+    }
+
+    public function recebeProdutosDaCesta($clieCpf) {
+        return new ProdutosDasCestaModel($clieCpf, $_POST['prodId']);
     }
 
 }

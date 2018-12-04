@@ -24,7 +24,7 @@ class ProdutosDaCestaAdo extends AdoPdoAbstract {
     }
 
     public function insereObjeto(ModelAbstract $produtosDaCestaModel) {
-        $query = "INSERT INTO {$this->getNomeDaTabela()} (prceCestClieCpf, prceProdId) values (?,?) ";
+        $query = "INSERT INTO {$this->getNomeDaTabela()} (prceCestClieCpf, prceCestProdId) values (?,?) ";
         
         return $this->executaPs($query, array($produtosDaCestaModel->getPrceCestClieCpf(), $produtosDaCestaModel->getPrceProdId()));
     }

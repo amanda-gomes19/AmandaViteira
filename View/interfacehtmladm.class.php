@@ -93,7 +93,7 @@ abstract class InterfaceHtmlAdm {
         $this->divDoCabecalho->setId("divCabecalho");
         $this->divDoCabecalho->setClass("container");
 
-        $imgIfg = new HtmlImg("../CSS/ifg-inhumas.jpg", "Imagem do IFG");
+//        $imgIfg = new HtmlImg("../CSS/ifg-inhumas.jpg", "Imagem do IFG");
         $this->divDoCabecalho->adicionaObjeto($imgIfg);
     }
 
