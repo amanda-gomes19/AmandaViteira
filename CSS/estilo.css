@@ -1,4 +1,6 @@
-
+body{
+    background-image: url("fundo.jpg");
+}
 div#divCabecalho {
     height: 15%;
     /*border: 1px solid #000;*/
@@ -6,6 +8,8 @@ div#divCabecalho {
     background-attachment: fixed;
     background-position: top left;
     background-repeat: no-repeat;*/
+    background-color: rgb(255, 255, 255);
+    border-radius: 10px;
 }
 div.container img {
     max-width: 100%; 
@@ -13,10 +17,14 @@ div.container img {
 }
 div#divMenu {
     float: left;
-    width: 10%;
+    width: 18%;
+    background-color: rgb(255, 255, 255);
+    border-radius: 10px;
 }
 div#divConteudo {
-    margin-left: 10%;
+    margin-left: 19%;
+    background-color: rgb(255, 255, 255, 0.7);
+    border-radius: 10px;
 }
 div#divTitulo {
     margin-left: 10%;
