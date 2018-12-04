@@ -2,29 +2,35 @@
 
 require_once '../ADO/produtosdacestaado.class.php';
 require_once '../View/produtoshomeview.class.php';
+require_once '../ADO/produtoado.class.php';
+require_once '../Model/produtomodel.class.php';
 require_once '../Model/produtosdascestamodel.class.php';
 
 class HomeController {
 
     private $produtosDaCestaAdo = null;
+    private $produtoado = null;
     private $produtoHomeView = null;
     private $produtosdacestamodel = null;
     private $acao = null;
+    private $produtomodel = null;
 
     function __construct() {
 
         $this->produtosDaCestaAdo = new ProdutosDaCestaAdo();
+        $this->produtoado = new ProdutoAdo();
         $this->produtosdacestamodel = new ProdutosDasCestaModel();
+        $this->produtomodel = new ProdutoModel();
         $this->produtoHomeView = new ProdutosHomeView();
         $this->acao = $this->produtoHomeView->getBt();
-        
-        
+
+
         session_start();
         if (isset($_SESSION["clieCpf"])) {
             $aux = $_SESSION["clieCpf"];
             switch ($this->acao) {
                 case "incCesta":
-
+                    $this->incluiProdutoNaCesta($aux);
 
                     break;
 
@@ -35,22 +41,23 @@ class HomeController {
             $this->produtoHomeView->adicionaMensagem("Faça login novamente");
             return;
         }
-        
-        $this->produtoHomeView->displayInterface("Home", $this->produtosdacestamodel, $acao);
+
+        $this->produtoHomeView->displayInterface("Home", $this->produtosdacestamodel, $this->acao);
     }
-    
-    private function incluiProdutoNaCesta($produtoDaCestaModel) {
+
+    private function incluiProdutoNaCesta($aux) {
+        $this->produtomodel->setProdId($this->produtoado->recuperaId());
+        $this->produtosdacestamodel->setPrceProdId($this->produtoado->recuperaId());
+        $this->produtosdacestamodel->setPrceCestClieCpf($aux);
         
-        $inseriu = $this->produtosDaCestaAdo->insereObjeto($produtosDaCestaModel);
-        
+        $inseriu = $this->produtosDaCestaAdo->insereObjeto($this->produtosdacestamodel);
+
         if ($inseriu) {
+
             $this->produtoHomeView->adicionaMensagem("Produto adicionado com sucesso!");
-            
-        }else{
+        } else {
             $this->produtoHomeView->adicionaMensagem("Deu ruim!");
         }
-        
-        
     }
 
 }

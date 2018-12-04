@@ -3,8 +3,7 @@
 require_once 'interfacehtml.class.php';
 
 class ProdutosHomeView extends InterfaceHtml {
-    
-    
+
     protected function montaFormConsulta() {
         
     }
@@ -13,66 +12,66 @@ class ProdutosHomeView extends InterfaceHtml {
         return "Produtos Disponíveis";
     }
 
-    public function montaFormDosDados() {
+    public function montaFormDosDados($dados) {
         $div = new DivHtml();
-        
+
         $div->adicionaObjeto($this->montaFieldsetProdutos());
-        
+
         return $div;
-        
     }
+
     protected function montaFieldsetProdutos() {
-        $fieldsetProdutos = new HtmlFieldset(NULL);
-        $fieldsetProdutos->adicionaObjeto($this->montaFieldsetProdutos());
+        $fieldsetProdutos = new HtmlFieldset();
+        $fieldsetProdutos->adicionaObjeto($this->montaTabelaProdutos());
         return $fieldsetProdutos;
     }
+
     public function montaTabelaProdutos() {
         $form = new FormHtml("home.php", "post");
         $br = new BrHtml();
         $produtoAdo = new ProdutoAdo();
         $buscou = $produtosDisponiveis = $produtoAdo->buscaTodosOsProdutos();
-        
+
         if ($buscou) {
             
-        }else{
+        } else {
             if ($buscou === 0) {
                 $this->adicionaMensagem("Nenhum produto disponível!");
-            }else{
+            } else {
                 $this->adicionaMensagem("Erro! Contate o responsável pelo sistema.");
-                        
             }
-            
+
             return false;
         }
-        
+
         $formIncluir = new FormHtml();
-        
+
         $table = new HtmlTable();
-        
-        foreach ($produtosDisponiveis as $produto) {
+
+        for ($j = 0; $j < $produtosDisponiveis; $j++) {
+
             $tr = new HtmlTr();
             for ($i = 0; $i < 3; $i++) {
                 $td = new HtmlTd();
-                $td->adicionaObjeto($produto->prodNome);
+                $td->adicionaObjeto($produto->getProdNome());
                 $td->adicionaObjeto($br);
-                $td->adicionaObjeto($produto->prodValor);
+                $td->adicionaObjeto($produto->getProdValor());
                 $td->adicionaObjeto($br);
                 $formIncluir = $this->montaObjetoForm($produto);
                 $td->adicionaObjeto($formIncluir);
                 $tr->adicionaObjeto($td);
             }
             $table->adicionaObjeto($tr);
-            
         }
         $form->adicionaObjeto($table);
         return $form;
     }
-    
+
     public function montaObjetoForm($produto) {
         $form = new FormHtml();
         $form->setMethod("post");
 
-        $inputProduto = new InputHtml("text", "prodId", $produto->prodId);
+        $inputProduto = new InputHtml("text", "prodId", $produto->getProdId());
         $inputProduto->setType("hidden");
         $form->adicionaObjeto($inputProduto);
 
@@ -85,10 +84,6 @@ class ProdutosHomeView extends InterfaceHtml {
 
     function montaLegendaDados($acao) {
         $this->textoDaLegenda = NULL;
-    }
-
-    public function montaFormDosDadosProduto() {
-        
     }
 
 }

@@ -205,8 +205,6 @@ abstract class InterfaceHtml {
      * um objeto do tipo FormHtml.
      */
     public abstract function montaFormDosDados($dados);
-    
-    public abstract function montaFormDosDadosProduto();
 
     protected function montaLegendaDados($acao) {
         $this->textoDaLegenda = null;

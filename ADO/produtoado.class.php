@@ -49,6 +49,7 @@ class ProdutoAdo extends AdoPdoAbstract {
 
         return new Produtomodel($objetoBD['prodId'], $objetoBD['prodNome'], $objetoBD['prodValor'], $objetoBD['prodQtde']);
     }
+    
 
     public function buscaTodosOsProdutos() {
         try {
