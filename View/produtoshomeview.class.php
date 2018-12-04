@@ -47,19 +47,21 @@ class ProdutosHomeView extends InterfaceHtml {
         $formIncluir = new FormHtml();
 
         $table = new HtmlTable();
-
-        for ($j = 0; $j < $produtosDisponiveis; $j++) {
-
+        for ($j = 0; $j < count($produtosDisponiveis); $j++) {
             $tr = new HtmlTr();
             for ($i = 0; $i < 3; $i++) {
+                if($j >= count($produtosDisponiveis)){
+                    break;
+                }
                 $td = new HtmlTd();
-                $td->adicionaObjeto($produto->getProdNome());
+                $td->adicionaObjeto($produtosDisponiveis[$j]->getProdNome());
                 $td->adicionaObjeto($br);
-                $td->adicionaObjeto($produto->getProdValor());
+                $td->adicionaObjeto($produtosDisponiveis[$j]->getProdValor());
                 $td->adicionaObjeto($br);
-                $formIncluir = $this->montaObjetoForm($produto);
+                $formIncluir = $this->montaObjetoForm($produtosDisponiveis[$j]);
                 $td->adicionaObjeto($formIncluir);
                 $tr->adicionaObjeto($td);
+                $j++;
             }
             $table->adicionaObjeto($tr);
         }
