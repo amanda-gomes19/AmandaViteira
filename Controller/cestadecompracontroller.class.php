@@ -45,8 +45,9 @@ class CestaDeCompraController {
     }
 
     private function retiraProdutoDaCesta($aux) {
-        $this->produtoDaCestaModel = $this->cestaDeCompraView->recebeProdutosDaCesta($aux);
-        $retirou = $this->produtosDaCestaAdo->excluiObjeto($this->produtoDaCestaModel);
+        $produtoDaCestaModel = $this->cestaDeCompraView->recebeProdutosDaCesta($aux);
+        
+        $retirou = $this->produtosDaCestaAdo->excluiObjeto($produtoDaCestaModel);
         if ($retirou) {
             
             $this->cestaDeCompraView->adicionaMensagem("O produto foi excluído da sua cesta com sucesso!");

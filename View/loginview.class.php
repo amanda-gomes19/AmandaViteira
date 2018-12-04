@@ -11,9 +11,8 @@ class LoginView extends InterfaceHtml {
     }
 
     protected function montaTituloDoModulo() {
-        
+
         return "Login";
-        
     }
 
     public function montaFormDosDados($clienteModel) {
@@ -44,6 +43,23 @@ class LoginView extends InterfaceHtml {
         $button->setValue("loga");
         $button->setTexto("LOGAR");
 
+        $this->form->adicionaObjeto($button);
+
+        $button = new ButtonHtml();
+
+        $button->setType("submit");
+        $button->setName("bt");
+        $button->setValue("altSenha");
+        $button->setTexto("ALTERAR A SENHA");
+        //Adiciona ao array de objetos
+        $this->form->adicionaObjeto($button);
+        
+        $button = new ButtonHtml();
+
+        $button->setType("submit");
+        $button->setName("bt");
+        $button->setValue("altDados");
+        $button->setTexto("ALTERAR DADOS");
         //Adiciona ao array de objetos
         $this->form->adicionaObjeto($button);
     }
@@ -64,9 +80,10 @@ class LoginView extends InterfaceHtml {
         $p->adicionaObjeto($inputSenhaCliente);
         $this->form->adicionaObjeto($p);
     }
-    
-    public function montaLegendaDados($acao){
+
+    public function montaLegendaDados($acao) {
         $this->textoDaLegenda = null;
     }
 
+    
 }

@@ -126,7 +126,7 @@ class ClienteView extends InterfaceHtml {
         $labelSenhaCliente = new LabelHtml("Senha ");
         $p->adicionaObjeto($labelSenhaCliente);
 
-        $inputSenhaCliente = new InputHtml("text", "clieSenha", $clienteModel->getClieSenha());
+        $inputSenhaCliente = new InputHtml("password", "clieSenha", $clienteModel->getClieSenha());
         $p->adicionaObjeto($inputSenhaCliente);
         $this->form->adicionaObjeto($p);
 

@@ -26,6 +26,7 @@ class ClienteAdo extends AdoPdoAbstract {
 
         return $this->executaPs($query, array($clienteModel->getClieCpf(), $clienteModel->getClieNome(), $clienteModel->getClieRg(), $clienteModel->getClieUfRg(), $clienteModel->getClieRgDtExpedicao(), $clienteModel->getClieEndereco(), $clienteModel->getClieCep(), $clienteModel->getClieFone(), $clienteModel->getClieEmail(), $clienteModel->getClieSenha()));
     }
+    
 
     public function buscaCliente($clieEmail) {
         $query = "SELECT * FROM {$this->getNomeDaTabela()} where clieEmail = ?";

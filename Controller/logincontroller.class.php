@@ -23,6 +23,14 @@ class LoginController {
                 $this->loga();
 
                 break;
+            case "altSenha":
+                $this->alteraSenha();
+
+                break;
+            case "altDados":
+                $this->alteraDados();
+
+                break;
 
             default:
                 break;
@@ -46,6 +54,21 @@ class LoginController {
                 $this->loginView->adicionaMensagem("Ocorreu um erro ao tentar logar! Contate o responsável pelo sistema.");
             }
         }
+    }
+    
+    private function alteraSenha() {
+        $clienteModel = $this->loginView->recebeDadosDoFormulario();
+        $buscou = $this->clienteModel = $this->clienteAdo->buscaClientePeloLogin($clienteModel);
+        
+        if($buscou){
+            session_start();
+            $_SESSION["clieCpf"]= $this->clienteModel->getClieCpf();
+            header("Location: home.php");
+        }
+    }
+    
+    private function alteraDados() {
+        
     }
 }
     
