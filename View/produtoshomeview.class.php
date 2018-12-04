@@ -13,17 +13,21 @@ class ProdutosHomeView extends InterfaceHtml {
         return "Produtos Disponíveis";
     }
 
-    public function montaFormDosDados($dados) {
-        $montou = $tabelaDeProdutos = $this->montaTabelaProdutos();
-        if ($montou) {
-            return $tabelaDeProdutos;
-        }else{
-            $this->adicionaMensagem("Nenhum produto disponível!");
-            return false;
-        }
+    public function montaFormDosDados() {
+        $div = new DivHtml();
+        
+        $div->adicionaObjeto($this->montaFieldsetProdutos());
+        
+        return $div;
+        
     }
-    
+    protected function montaFieldsetProdutos() {
+        $fieldsetProdutos = new HtmlFieldset(NULL);
+        $fieldsetProdutos->adicionaObjeto($this->montaFieldsetProdutos());
+        return $fieldsetProdutos;
+    }
     public function montaTabelaProdutos() {
+        $form = new FormHtml("home.php", "post");
         $br = new BrHtml();
         $produtoAdo = new ProdutoAdo();
         $buscou = $produtosDisponiveis = $produtoAdo->buscaTodosOsProdutos();
@@ -32,7 +36,7 @@ class ProdutosHomeView extends InterfaceHtml {
             
         }else{
             if ($buscou === 0) {
-                $this->adicionaMensagem("Tabela vazia");
+                $this->adicionaMensagem("Nenhum produto disponível!");
             }else{
                 $this->adicionaMensagem("Erro! Contate o responsável pelo sistema.");
                         
@@ -60,6 +64,8 @@ class ProdutosHomeView extends InterfaceHtml {
             $table->adicionaObjeto($tr);
             
         }
+        $form->adicionaObjeto($table);
+        return $form;
     }
     
     public function montaObjetoForm($produto) {
@@ -80,4 +86,9 @@ class ProdutosHomeView extends InterfaceHtml {
     function montaLegendaDados($acao) {
         $this->textoDaLegenda = NULL;
     }
+
+    public function montaFormDosDadosProduto() {
+        
+    }
+
 }

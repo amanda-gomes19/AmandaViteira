@@ -41,7 +41,7 @@ class LoginController {
         } else {
             $this->clienteModel = new ClienteModel();
             if ($buscou === 0) {
-                $this->loginView->adicionaMensagem("Esse e-mail não foi encontrado! Tente novamente.");
+                $this->loginView->adicionaMensagem("Esse CPF não foi encontrado! Tente novamente.");
             } else {
                 $this->loginView->adicionaMensagem("Ocorreu um erro ao tentar logar! Contate o responsável pelo sistema.");
             }

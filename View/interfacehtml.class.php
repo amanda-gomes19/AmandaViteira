@@ -110,6 +110,15 @@ abstract class InterfaceHtml {
         $li = new HtmlLi();
 
         $a = new HtmlA();
+        $a->setHref("home.php");
+        $a->adicionaObjeto("Home");
+        $li->adicionaObjeto($a);
+
+        $ul->adicionaObjeto($li);
+
+        $li = new HtmlLi();
+
+        $a = new HtmlA();
         $a->setHref("cadastracliente.php");
         $a->adicionaObjeto("Cadastro de Clientes");
         $li->adicionaObjeto($a);
@@ -196,6 +205,8 @@ abstract class InterfaceHtml {
      * um objeto do tipo FormHtml.
      */
     public abstract function montaFormDosDados($dados);
+    
+    public abstract function montaFormDosDadosProduto();
 
     protected function montaLegendaDados($acao) {
         $this->textoDaLegenda = null;

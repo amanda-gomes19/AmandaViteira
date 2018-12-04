@@ -2,7 +2,7 @@
 
 require_once 'modelabstract.class.php';
 
-class ProdutosDasCestas extends ModelAbstract{
+class ProdutosDasCestaModel extends ModelAbstract{
     private $prceCestClieCpf;
     private $prceProdId;
     
