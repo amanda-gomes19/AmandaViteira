@@ -8,7 +8,7 @@ div#divCabecalho {
     background-attachment: fixed;
     background-position: top left;
     background-repeat: no-repeat;*/
-    background-color: rgb(255, 255, 255);
+    background-color: rgb(0, 0, 0));
     border-radius: 10px;
 }
 div.container img {
@@ -18,7 +18,7 @@ div.container img {
 div#divMenu {
     float: left;
     width: 18%;
-    background-color: rgb(255, 255, 255);
+    background-color: rgb(0, 0, 0);
     border-radius: 10px;
 }
 div#divConteudo {
