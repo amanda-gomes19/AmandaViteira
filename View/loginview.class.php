@@ -53,7 +53,7 @@ class LoginView extends InterfaceHtml {
         $button->setTexto("ALTERAR A SENHA");
         //Adiciona ao array de objetos
         $this->form->adicionaObjeto($button);
-        
+
         $button = new ButtonHtml();
 
         $button->setType("submit");
@@ -81,9 +81,37 @@ class LoginView extends InterfaceHtml {
         $this->form->adicionaObjeto($p);
     }
 
+    public function montaInputsAlterarSenha($clienteModel) {
+        $form = new FormHtml("alteraSenha.php", "post");
+        $p = new PHtml();
+
+        $labelCpfCliente = new LabelHtml("CPF ");
+        $p->adicionaObjeto($labelCpfCliente);
+        $inputCpfCliente = new InputHtml("text", "clieCpf", null);
+        $p->adicionaObjeto($inputCpfCliente);
+        $form->adicionaObjeto($p);
+
+        $p = new PHtml();
+
+        $labelSenhaCliente = new LabelHtml("Senha ");
+        $p->adicionaObjeto($labelSenhaCliente);
+        $inputSenhaCliente = new InputHtml("password", "clieSenha", null);
+        $p->adicionaObjeto($inputSenhaCliente);
+        $form->adicionaObjeto($p);
+
+        $p = new PHtml();
+
+        $labelSenhaNovamenteCliente = new LabelHtml("Senha ");
+        $p->adicionaObjeto($labelSenhaNovamenteCliente);
+        $inputSenhaNovamenteCliente = new InputHtml("password", "clieSenhaNovamente", null);
+        $p->adicionaObjeto($inputSenhaNovamenteCliente);
+        $form->adicionaObjeto($p);
+        
+        return $form;
+    }
+
     public function montaLegendaDados($acao) {
         $this->textoDaLegenda = null;
     }
 
-    
 }

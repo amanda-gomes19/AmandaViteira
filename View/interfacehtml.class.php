@@ -100,14 +100,17 @@ abstract class InterfaceHtml {
         $this->divDoCabecalho->setId("divCabecalho");
         $this->divDoCabecalho->setClass("container");
 
-//        $imgIfg = new HtmlImg("../CSS/ifg-inhumas.jpg", "Imagem do IFG");
-//        $this->divDoCabecalho->adicionaObjeto($imgIfg);
+        $imgLivraria = new HtmlImg("../CSS/AvLivraria.jpeg");
+        $this->divDoCabecalho->adicionaObjeto($imgLivraria);
     }
 
     private function montaDivDoMenu() {
+        $br = new BrHtml();
         $ul = new HtmlUl();
 
         $li = new HtmlLi();
+
+        $ul->adicionaObjeto($br);
 
         $a = new HtmlA();
         $a->setHref("home.php");
@@ -115,7 +118,8 @@ abstract class InterfaceHtml {
         $li->adicionaObjeto($a);
 
         $ul->adicionaObjeto($li);
-        
+        $ul->adicionaObjeto($br);
+
         $li = new HtmlLi();
 
         $a = new HtmlA();
@@ -124,7 +128,8 @@ abstract class InterfaceHtml {
         $li->adicionaObjeto($a);
 
         $ul->adicionaObjeto($li);
-        
+        $ul->adicionaObjeto($br);
+
         $li = new HtmlLi();
 
         $a = new HtmlA();
@@ -133,6 +138,7 @@ abstract class InterfaceHtml {
         $li->adicionaObjeto($a);
 
         $ul->adicionaObjeto($li);
+        $ul->adicionaObjeto($br);
 
         $li = new HtmlLi();
 
@@ -142,7 +148,7 @@ abstract class InterfaceHtml {
         $li->adicionaObjeto($a);
 
         $ul->adicionaObjeto($li);
-
+        $ul->adicionaObjeto($br);
 
         $this->divDoMenu->adicionaObjeto($ul);
     }

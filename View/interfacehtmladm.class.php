@@ -93,11 +93,14 @@ abstract class InterfaceHtmlAdm {
         $this->divDoCabecalho->setId("divCabecalho");
         $this->divDoCabecalho->setClass("container");
 
-//        $imgIfg = new HtmlImg("../CSS/ifg-inhumas.jpg", "Imagem do IFG");
-        $this->divDoCabecalho->adicionaObjeto($imgIfg);
+       $imgAvLivraria = new HtmlImg("../CSS/AvLivraria.jpeg");
+        $this->divDoCabecalho->adicionaObjeto($imgAvLivraria);
+        
+        
     }
 
     private function montaDivDoMenuAdm() {
+        $br = new BrHtml();
         $ul = new HtmlUl();
 
         $li = new HtmlLi();
@@ -107,6 +110,7 @@ abstract class InterfaceHtmlAdm {
         $a->adicionaObjeto("Cadastro de Fornecedores");
         $li->adicionaObjeto($a);
 
+        $ul->adicionaObjeto($br);
         $ul->adicionaObjeto($li);
 
         $li = new HtmlLi();
@@ -116,8 +120,10 @@ abstract class InterfaceHtmlAdm {
         $a->adicionaObjeto("Cadastro de Produtos");
         $li->adicionaObjeto($a);
 
+        $ul->adicionaObjeto($br);
         $ul->adicionaObjeto($li);
-
+        $ul->adicionaObjeto($br);
+        
         $this->divDoMenu->adicionaObjeto($ul);
     }
 
