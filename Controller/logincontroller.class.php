@@ -21,16 +21,7 @@ class LoginController {
         switch ($acao) {
             case "loga":
                 $this->loga();
-
-                break;
-            case "altSenha":
-                $this->alteraSenha();
-
-                break;
-            case "altDados":
-                $this->alteraDados();
-
-                break;
+               break;
 
             default:
                 break;
@@ -55,20 +46,7 @@ class LoginController {
             }
         }
     }
+ 
     
-    private function alteraSenha() {
-        $clienteModel = $this->loginView->recebeDadosDoFormulario();
-        $buscou = $this->clienteModel = $this->clienteAdo->buscaClientePeloLogin($clienteModel);
-        
-        if($buscou){
-            session_start();
-            $_SESSION["clieCpf"]= $this->clienteModel->getClieCpf();
-            header("Location: home.php");
-        }
-    }
-    
-    private function alteraDados() {
-        
-    }
 }
     
